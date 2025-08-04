@@ -1,19 +1,16 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test('sign up process with mail', async ({ page }) => {
+  await page.goto('https://suite.walkerdunlop.com/');
+  await page.locator('[data-test="signup-button"]').click();
+  await page.fill('[data-test="userFirstname"]',"santi")
+  await page.fill('[data-test="userLastname"]',"holguin giraldo")
+  await page.fill('[data-test="userEmail"]',"santiago.holguin@endava.com")
+  await page.fill('[data-test="userPassword"]',"santiago.123456789")
+  await page.locator('[data-test="termsAndPrivacyCheckbox"]').click();
+  await page.locator('[data-test="signUpButton"]').click();
 
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
