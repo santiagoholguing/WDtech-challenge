@@ -1,16 +1,23 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-import { LandingPage } from '../test-pages/landingPage.js';
+import { LandingPage } from '../test-pages/LandingPage.js';
+import { loginWithDefaultCredentials } from '../test-helpers/Commands.js';
+import { signUpWithDefaultCredentials } from '../test-helpers/Commands.js';
 
-test('sign up process with mail', async ({ page }) => {
+
+test('sign-up process with mail', async ({ page }) => {
   const landingPage = new LandingPage(page);
   await landingPage.gotoLandingPage();
-  await landingPage.signUpHeaderButton.click();
-  await landingPage.firstNameField.fill('santi');
-  await landingPage.lastNameField.fill('holguin giraldo');
-  await landingPage.Emailfield.fill('santiago.holguin@endava.com');
-  await landingPage.passwordfield.fill('Sant.holguin1234');
-  await landingPage.termsOfUseCheckbox.click();
-  await landingPage.signUpProcessButton.click();
+  await landingPage.LandingSignUpButton.click();
+  await signUpWithDefaultCredentials(page,'santi', 'holguin giraldo', 'santiago.holguin@endava.com', 'Santi.164251');
 
 });
+
+test('log-in process with mail', async ({ page }) => {
+  const landingPage = new LandingPage(page);
+  await landingPage.gotoLandingPage();
+  await landingPage.LandingLogginButton.click();
+  await loginWithDefaultCredentials(page, 'santiago.holguin@endava.com', 'Santi.164251');
+
+});
+
