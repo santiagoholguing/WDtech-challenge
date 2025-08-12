@@ -1,4 +1,4 @@
-export class loginPage {
+export class LoginPage {
   constructor(page) {
     this.page = page;
     this.LoginEmailfield = page.locator('[data-test="userEmail"]');
@@ -16,5 +16,11 @@ export class loginPage {
 
   async clickSignInButton() {
     await this.LoginSignInButton.click();
+  }
+
+   async loginWithDefaultCredentials(email, password) {
+    await this.fillEmail(email);
+    await this.fillPassword(password);
+    await this.clickSignInButton();
   }
 }

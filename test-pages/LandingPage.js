@@ -1,6 +1,6 @@
 
-export class landingPage {
-  
+export class LandingPage {
+
   constructor(page) {
     this.page = page;
     this.landingLogginButton= page.locator('[data-test="login-button"]');

@@ -1,5 +1,6 @@
 import { loginPage } from '../test-pages/loginPage.js';
-import { signUpPage } from '../test-pages/signUpPage.js';
+import { SignUpPage } from '../test-pages/SignUpPage.js';
+
 
 export async function loginWithDefaultCredentials(page, email, password) {
   const LoginPage = new loginPage(page);
@@ -10,7 +11,7 @@ export async function loginWithDefaultCredentials(page, email, password) {
 
 
 export async function signUpWithDefaultCredentials(page, firstName, lastName, email, password) {
-  const SignUpPage = new signUpPage(page);
+  const SignUpPage = new SignUpPage(page);
   await SignUpPage.fillFirstName(firstName);
   await SignUpPage.fillLastName(lastName);
   await SignUpPage.fillEmail(email);

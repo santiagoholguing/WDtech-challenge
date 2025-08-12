@@ -1,24 +1,25 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-import { landingPage } from '../test-pages/landingPage.js';
-import { loginWithDefaultCredentials } from '../test-helpers/Commands.js';
-import { signUpWithDefaultCredentials } from '../test-helpers/Commands.js';
+import { LandingPage } from '../test-pages/LandingPage.js';
+import { SignUpPage } from '../test-pages/SignUpPage.js';
+import { LoginPage } from '../test-pages/LoginPage.js';
 
 
-test('sign-up process with mail', async ({ page }) => {
-  const LandingPage = new landingPage(page);
-  await LandingPage.goToLandingPage();
-  await LandingPage.clickLandingSignUpButton();
-  await signUpWithDefaultCredentials(page, 'santi', 'holguin giraldo', 'santiago.holguin@endava.com', 'Santi.164251');
-  
+test('Sign-up process with mail', async ({ page }) => {
+  const landingPage = new LandingPage(page);
+  await landingPage.goToLandingPage();
+  await landingPage.clickLandingSignUpButton();
+  const signUpPage = new SignUpPage(page);
+  await signUpPage.signUpWithDefaultCredentials('santi', 'holguin giraldo', 'santiago.holguin@endava.com', 'Santi.164251');
 
 });
 
-test('log-in process with mail', async ({ page }) => {
-  const LandingPage = new landingPage(page);
-  await LandingPage.goToLandingPage();
-  await LandingPage.clickLandingLogginButton();
-  await loginWithDefaultCredentials(page, 'santiago.holguin@endava.com', 'Santi.164251');
+test('Log-in process with mail', async ({ page }) => {
+  const landingPage = new LandingPage(page);
+  await landingPage.goToLandingPage();
+  await landingPage.clickLandingLogginButton();
+  const loginPage = new LoginPage(page);
+  await loginPage.loginWithDefaultCredentials('santiago.holguin@endava.com', 'Santi.164251');
 
 });
 

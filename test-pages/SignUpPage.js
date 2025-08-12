@@ -1,5 +1,5 @@
 
-export class signUpPage {
+export class SignUpPage {
   constructor(page) {
     this.page = page;
     this.firstNameField= page.locator('[data-test="userFirstname"]');
@@ -35,4 +35,14 @@ export class signUpPage {
   async clickSignUpProcessButton() {
     await this.signUpProcessButton.click();
   }
+
+  async  signUpWithDefaultCredentials(firstName, lastName, email, password) {
+  await this.fillFirstName(firstName);
+  await this.fillLastName(lastName);
+  await this.fillEmail(email);
+  await this.fillPassword(password);
+  await this.clickTermsOfUseCheckbox();
+  await this.clickSignUpProcessButton();
+
+}
 }
