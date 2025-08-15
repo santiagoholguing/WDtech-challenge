@@ -5,20 +5,26 @@ import { SignUpPage } from '../test-pages/SignUpPage.js';
 import { LoginPage } from '../test-pages/LoginPage.js';
 
 
-test('Sign-up process with mail', async ({ page }) => {
-  const landingPage = new LandingPage(page);
+let landingPage;
+let signUpPage;
+
+
+test.beforeEach(async ({ page }) => {
+  landingPage = new LandingPage(page);
   await landingPage.goToLandingPage();
+});
+
+test('Sign-up process with mail', async ({ page }) => {
+   
   await landingPage.clickLandingSignUpButton();
-  const signUpPage = new SignUpPage(page);
+  signUpPage = new SignUpPage(page);
   await signUpPage.signUpWithDefaultCredentials('santi', 'holguin giraldo', 'santiago.holguin@endava.com', 'Santi.164251');
 
 });
 
 test('Log-in process with mail', async ({ page }) => {
-  const landingPage = new LandingPage(page);
-  await landingPage.goToLandingPage();
   await landingPage.clickLandingLogginButton();
-  const loginPage = new LoginPage(page);
+  let loginPage = new LoginPage(page);
   await loginPage.loginWithDefaultCredentials('santiago.holguin@endava.com', 'Santi.164251');
 
 });
