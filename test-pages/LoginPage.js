@@ -4,6 +4,7 @@ export class LoginPage {
     this.LoginEmailfield = page.locator('[data-test="userEmail"]');
     this.Loginpasswordfield = page.locator('[data-test="userPassword"]');
     this.LoginSignInButton = page.locator('[data-test="signInButton"]');
+    this.LoggedUserIcon = page.locator('[data-test="shortName"]');
     
   }
    async fillEmail(email) {
